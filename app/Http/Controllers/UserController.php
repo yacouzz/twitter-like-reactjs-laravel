@@ -59,4 +59,11 @@ public $successStatus = 200;
         $user = Auth::user();
         return response()->json(['success' => $user], $this-> successStatus);
     }
+    
+    public function logout(){
+        Auth::logout();
+
+        return response()->json(['success'=>200]);
+    }
+    
 }
