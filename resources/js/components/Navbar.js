@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
+import { deleteUser } from './src/redux/user/user.actions';
 
 const Navbar = (props)=>{
     console.log(props)
@@ -40,7 +41,13 @@ const Navbar = (props)=>{
                                 {props.user.user.currentUser.user.name}  <span className="caret"></span>
                                 </a>
 
-                                {/*Logout ICI */}
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <button class="dropdown-item" onClick={()=>props.deleteUser(props.user.user.currentUser.user)}>
+                                       Log Out
+                                    </button>
+                                </div>
+
+
                             </li>
 }
 
@@ -56,4 +63,9 @@ const mapStateToProps = (currentUser) => ({
     user:currentUser
 })
 
-export default connect(mapStateToProps)(Navbar);
+const mapDispatchToProps = dispatch => ({
+    deleteUser: user => dispatch(deleteUser(user))
+  })
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(Navbar);
