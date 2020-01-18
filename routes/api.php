@@ -12,12 +12,24 @@ use Illuminate\Support\Facades\Auth;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+
 //Route::post('login', 'UserController@login');
 Route::post('login', 'Auth\LoginController@login');
 Route::post('register', 'UserController@register');
+Route::post('logout', 'UserController@logout');
+
 Route::group(['middleware' => 'auth:api'], function()
 {
+
    Route::get('details', 'UserController@details');
 });
+
+
+
+    Route::get('auth/google', 'UserController@redirectToGoogle');
+    Route::get('google/callback', 'UserController@handleGoogleCallback');
+
+
 
 

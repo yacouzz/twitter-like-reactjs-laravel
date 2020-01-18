@@ -19,9 +19,43 @@ class Login extends React.Component{
         this.handleChange=this.handleChange.bind(this);
         this.handlePassChange=this.handlePassChange.bind(this);
         this.handleSubmit=this.handleSubmit.bind(this);
+        this.SocialConnect=this.SocialConnect.bind(this);
 
-        //console.log(this.props)
+        console.log(this.props)
 
+    }
+
+    SocialConnect(){
+        var headers = {
+            'Content-Type': 'application/json',
+
+        }
+
+          const {setCurrentUser}=this.props;
+
+          window.location.assign(`auth/google`); //for the web route
+          /*axios.get(`auth/google`,{"headers" : headers}).then(response =>
+            console.log(response)
+            );*/
+           /* fetch('auth/google', {
+                method: "GET",
+                mode: "cors",
+                cache: "no-cache",
+
+               // body: JSON.stringify(data)
+              }).then(response =>
+                fetch(response.url, {
+                    method: "OPTIONS",
+                    mode: "cors",
+                    cache: "no-cache",
+
+                   // body: JSON.stringify(data)
+                  }).then(res => console.log(res))
+
+                );*/
+            /*axios.get('auth/google').then(
+                    res => console.log(res)
+                );*/
     }
 
     handleChange(e) {
@@ -56,7 +90,8 @@ class Login extends React.Component{
 */
       var headers = {
         'Content-Type': 'application/json',
-
+        'Accept' : 'application/json',
+         'X-CSRF-TOKEN' : document.querySelector('meta[name="csrf-token"]').getAttribute('content')
     }
 
 
@@ -103,6 +138,11 @@ class Login extends React.Component{
             </div>
             <button disabled={!this.state.email || !this.state.password || this.state.loading} type="submit" className="btn btn-primary">Submit</button>
         </form>
+
+        <button onClick={()=>this.SocialConnect()} className="loginBtn loginBtn--google">
+            Login with Google
+        </button>
+
         </div>
         </>)
     }

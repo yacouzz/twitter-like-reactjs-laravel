@@ -11,8 +11,12 @@
 |
 */
 
-Route::view('/{path?}', 'welcome');
+
+Route::get('/{path?}', 'MainController@renderView');
 
 Auth::routes();
+
+Route::get('auth/google', 'UserController@redirectToGoogle');
+Route::get('google/callback', 'UserController@handleGoogleCallback');
 
 

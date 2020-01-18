@@ -61,7 +61,7 @@ class LoginController extends Controller
         if($this->guard()->attempt(['email' => request('email'), 'password' => request('password')])){
             $user = Auth::user();
             $success['token'] =  $user->createToken('MyApp')-> accessToken;
-            return response()->json(['success' => $success,'user'=>$user], $this-> successStatus);
+            return response()->json(['success' => $success['token'] ,'user'=>$user], $this-> successStatus);
         }
         else{
             return response()->json(['error'=>'Unauthorised'], 401);
