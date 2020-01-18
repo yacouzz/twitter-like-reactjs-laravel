@@ -41,8 +41,13 @@ const Navbar = (props)=>{
                                 {props.user.user.currentUser.user.name}  <span className="caret"></span>
                                 </a>
 
+<<<<<<< HEAD
                                 <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <button className="dropdown-item" onClick={()=>props.deleteUser(props.user.user.currentUser.user)}>
+=======
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <button class="dropdown-item" onClick={()=>props.deleteUser(props.user.user.currentUser.user)}>
+>>>>>>> a9560e3643c93e50be06d5b13b07d4f82cb67cd1
                                        Log Out
                                     </button>
                                 </div>

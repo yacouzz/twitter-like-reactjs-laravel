@@ -38,7 +38,7 @@ public $successStatus = 200;
     }
 
 
-    public function register(Request $request)
+   public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
@@ -63,14 +63,20 @@ public $successStatus = 200;
         $user = Auth::user();
         return response()->json(['success' => $user], $this-> successStatus);
     }
+<<<<<<< HEAD
 
 
     public function logout(){
 
+=======
+    
+    public function logout(){
+>>>>>>> a9560e3643c93e50be06d5b13b07d4f82cb67cd1
         Auth::logout();
 
         return response()->json(['success'=>200]);
     }
+<<<<<<< HEAD
 
     public function redirectToGoogle()
     {
@@ -140,4 +146,7 @@ public $successStatus = 200;
       return $user;
     }
 */
+=======
+    
+>>>>>>> a9560e3643c93e50be06d5b13b07d4f82cb67cd1
 }
