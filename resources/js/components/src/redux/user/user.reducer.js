@@ -1,5 +1,6 @@
 import userTypesActions from './user.types';
-import {deleteCurrentUser} from './user.utils'
+import {deleteCurrentUser} from './user.utils';
+
 const INITIAL_STATE={
     currentUser: {
         token: null,
@@ -16,11 +17,7 @@ const userReducer =(state= INITIAL_STATE, action)=>{
         }
         case userTypesActions.DELETE_CURRENT_USER: return {
             ...state,
-<<<<<<< HEAD
             currentUser:deleteCurrentUser(state.currentUser,action.payload)
-=======
-            currentUser:deleteCurrentUser(action.payload)
->>>>>>> a9560e3643c93e50be06d5b13b07d4f82cb67cd1
         }
         default: return state;
     }

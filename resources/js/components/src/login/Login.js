@@ -16,6 +16,7 @@ class Login extends React.Component{
             loading:false,
             error:''
         }
+
         this.handleChange=this.handleChange.bind(this);
         this.handlePassChange=this.handlePassChange.bind(this);
         this.handleSubmit=this.handleSubmit.bind(this);
@@ -34,28 +35,7 @@ class Login extends React.Component{
           const {setCurrentUser}=this.props;
 
           window.location.assign(`auth/google`); //for the web route
-          /*axios.get(`auth/google`,{"headers" : headers}).then(response =>
-            console.log(response)
-            );*/
-           /* fetch('auth/google', {
-                method: "GET",
-                mode: "cors",
-                cache: "no-cache",
 
-               // body: JSON.stringify(data)
-              }).then(response =>
-                fetch(response.url, {
-                    method: "OPTIONS",
-                    mode: "cors",
-                    cache: "no-cache",
-
-                   // body: JSON.stringify(data)
-                  }).then(res => console.log(res))
-
-                );*/
-            /*axios.get('auth/google').then(
-                    res => console.log(res)
-                );*/
     }
 
     handleChange(e) {
@@ -73,7 +53,6 @@ class Login extends React.Component{
 
       }
 
-
       handleSubmit(e) {
         this.setState({
             loading:true,
@@ -81,13 +60,6 @@ class Login extends React.Component{
         })
       e.preventDefault();
 
-     /* const {email, password, remember}= this.state;
-
-      console.log(email)
-      console.log(password)
-      console.log(remember)
-      console.log(this.state)
-*/
       var headers = {
         'Content-Type': 'application/json',
         'Accept' : 'application/json',
@@ -137,11 +109,12 @@ class Login extends React.Component{
                 <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
             </div>
             <button disabled={!this.state.email || !this.state.password || this.state.loading} type="submit" className="btn btn-primary">Submit</button>
-        </form>
-
-        <button onClick={()=>this.SocialConnect()} className="loginBtn loginBtn--google">
+            <button onClick={()=>this.SocialConnect()} className="loginBtn loginBtn--google">
             Login with Google
         </button>
+        </form>
+
+
 
         </div>
         </>)

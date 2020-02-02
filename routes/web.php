@@ -20,3 +20,8 @@ Route::get('auth/google', 'UserController@redirectToGoogle');
 Route::get('google/callback', 'UserController@handleGoogleCallback');
 
 
+//Route::group(['middelware'=> ['auth']], function(){
+
+
+
+//});

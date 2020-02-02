@@ -66,7 +66,7 @@ class App extends React.Component {
        <Navbar/>
 
         <Switch>
-            <Route exact path="/" component={Main}></Route>
+            <Route exact path="/" render={()=>!this.props.user.user.currentUser.user ? (<Redirect to='/login'/>) :(<Main />) }></Route>
             <Route exact path="/login" /*component={Login}*/ render={()=>this.props.user.user.currentUser.user ? (<Redirect to='/'/>) :(<Login />) }></Route>
             <Route path="/register" render={()=>this.props.user.user.currentUser.user ? (<Redirect to='/'/>) :(<Register />) }></Route>
             <Route path="*" render={()=>(<Redirect to='/'/>)}></Route>

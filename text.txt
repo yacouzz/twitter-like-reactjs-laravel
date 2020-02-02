@@ -1,0 +1,1 @@
+ //"beyondcode/laravel-websockets": "^1.3",

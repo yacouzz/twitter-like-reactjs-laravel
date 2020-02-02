@@ -18,13 +18,11 @@ use Illuminate\Support\Facades\Auth;
 Route::post('login', 'Auth\LoginController@login');
 Route::post('register', 'UserController@register');
 Route::post('logout', 'UserController@logout');
-<<<<<<< HEAD
 
-=======
->>>>>>> a9560e3643c93e50be06d5b13b07d4f82cb67cd1
 Route::group(['middleware' => 'auth:api'], function()
 {
-
+    Route::post('/tweets/add','TweetController@create');
+    Route::get('/tweets','TweetController@index');
    Route::get('details', 'UserController@details');
 });
 

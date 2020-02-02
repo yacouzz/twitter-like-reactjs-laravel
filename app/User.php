@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
-
+use App\Tweet;
 
 class User extends Authenticatable
 {
@@ -39,5 +39,9 @@ class User extends Authenticatable
     ];
 
 
+
+    function tweets(){
+        return $this->hasMany(Tweet::class);
+    }
 
 }
