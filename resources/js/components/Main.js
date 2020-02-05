@@ -47,7 +47,15 @@ class Main extends React.Component {
     //LAUNCHING METHODS WHEN COMPONENT MOUNT
     componentDidMount(){
 
-            Echo.channel('laravel_database_new-post').listen('TweetCreated',(e)=>console.log('ICI PUSHER BROTHER'));
+            Echo.channel('laravel_database_new-post').listen('TweetCreated',(e)=>
+          {
+              console.log('from realtime system',e)
+              this.setState({
+                posts:[e.post,...this.state.posts],
+
+            });
+        }
+            );
     }
 
     //HANDLE THE SUBMIT OF THE FORM
@@ -67,7 +75,7 @@ class Main extends React.Component {
             console.log(response);
 
             this.setState({
-            posts:[...this.state.posts,response.data],
+            //posts:[...this.state.posts,response.data],
             content:''
         });
 
@@ -95,18 +103,17 @@ class Main extends React.Component {
 
         return this.state.posts.map(post=> (
          <div key={post.id} className="media">
-                 <div className="media-left">
+            <div className="media-body">
+                <div className="user">
+                    <a  href="#">
+                    <b>{post.user.name}</b>
+                    </a> {' '}
+                    - {post.created_at}
+                </div>
 
-             </div>
-             <div className="media-body">
-                 <div className="user">
-         <a  href="#">
-         <b>{post.user.name}</b>
-         </a> {' '}
-         - {post.created_at}
-             </div>
-        <p>{post.content}</p>
-        </div>
+                    <p>{post.content}</p>
+
+            </div>
          </div>
          ));
          }
